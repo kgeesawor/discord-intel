@@ -135,7 +135,7 @@ results = (table
 ```python
 results = (table
     .search(query_vector)
-    .where("author = 'kitze'")
+    .where("author = 'username'")
     .limit(20)
     .to_pandas())
 ```
