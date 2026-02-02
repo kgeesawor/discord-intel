@@ -70,7 +70,7 @@ Only processes messages still `pending` (skips regex_flagged).
 
 For maximum isolation, use a sandboxed agent:
 
-**Clawdbot config (clawdbot.json):**
+**Agent config example:**
 ```json
 {
   "agents": {

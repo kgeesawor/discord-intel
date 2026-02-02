@@ -10,7 +10,7 @@ import re
 import sys
 from pathlib import Path
 
-DB_PATH = Path.home() / "clawd/discord-knowledge/discord.sqlite"
+DB_PATH = Path("./discord.db")
 
 # Prompt injection patterns (case-insensitive)
 SUSPICIOUS_PATTERNS = [

@@ -20,7 +20,10 @@ TOKEN=$(cat "$TOKEN_FILE")
 # Exporter path (adjust for your system)
 DCE="${DISCORD_EXPORTER:-DiscordChatExporter.Cli}"
 if ! command -v "$DCE" &> /dev/null; then
-    DCE="$HOME/clawd/tools/discord-exporter/DiscordChatExporter.Cli"
+    echo "ERROR: DiscordChatExporter.Cli not found"
+    echo "Install from: https://github.com/Tyrrrz/DiscordChatExporter"
+    echo "Or set DISCORD_EXPORTER=/path/to/DiscordChatExporter.Cli"
+    exit 1
 fi
 
 # Output
