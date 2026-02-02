@@ -41,8 +41,24 @@ Export → SQLite → Regex Filter → Haiku Eval → Safe Content
 1. **SQLite buffer** — Structured storage with safety status tracking
 2. **Regex filter** — Blocks 25+ known injection patterns (no LLM cost)
 3. **Haiku eval** — Catches semantic attacks that bypass regex (~$0.25/1M tokens)
+4. **Read-only agent** — Sandboxed agent that can only read, not act
 
 Only messages marked `safe` reach your agent.
+
+### Read-Only Agent
+
+Even with filtered content, defense-in-depth means restricting what the summarizing agent can do. Configure a sandboxed agent with minimal permissions:
+
+```json
+{
+  "tools": {
+    "allow": ["Read", "exec"],
+    "deny": ["Write", "Edit", "message", "browser", "web_search", "..."]
+  }
+}
+```
+
+The agent can query SQLite via `sqlite3` but cannot send messages, write files, browse the web, or spawn other agents. If an injection somehow gets through, it can't do any damage.
 
 ## Why Add LanceDB?
 
